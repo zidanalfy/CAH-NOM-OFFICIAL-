@@ -81,6 +81,10 @@ const popupRating = document.getElementById("popupRating");
 
 let postAktif = "";
 
+const namaKomentar = document.getElementById("namaKomentar");
+const isiKomentar = document.getElementById("isiKomentar");
+const kirimKomentar = document.getElementById("kirimKomentar");
+const daftarKomentar = document.getElementById("daftarKomentar");
 
 tombolKomentar.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -201,7 +205,37 @@ async function tampilkanLike(idPosting){
 
 const cari = document.getElementById("cari");
 const card = document.querySelectorAll(".card");
+kirimKomentar.addEventListener("click", async () => {
 
+    if (namaKomentar.value.trim() === "" || isiKomentar.value.trim() === "") {
+        alert("Nama dan komentar harus diisi!");
+        return;
+    }
+
+    const komentarBaru = document.createElement("div");
+    komentarBaru.className = "item-komentar";
+
+    komentarBaru.innerHTML = `
+        <b>${namaKomentar.value}</b><br>
+        ${isiKomentar.value}
+        <hr>
+    `;
+
+    daftarKomentar.prepend(komentarBaru);
+
+    await addDoc(collection(db, "Komentar"), {
+        post: postAktif,
+        nama: namaKomentar.value,
+        komentar: isiKomentar.value,
+        tanggal: serverTimestamp()
+    });
+    
+    namaKomentar.value = "";
+    isiKomentar.value = "";
+
+    alert("Komentar berhasil dikirim.");
+});
+    
 cari.addEventListener("keyup", function(){
 
     const keyword = cari.value.toLowerCase();
