@@ -54,6 +54,7 @@ document.getElementById("judulPopup").innerHTML=
 "💬 "+namaPostingan.toUpperCase();
 
 popup.classList.add("active");
+tampilkanKomentar(postAktif);
 
 }
 
@@ -234,6 +235,8 @@ kirimKomentar.addEventListener("click", async () => {
     isiKomentar.value = "";
 
     alert("Komentar berhasil dikirim.");
+    await tampilkanKomentar(postAktif);
+    
 });
     
 cari.addEventListener("keyup", function(){
@@ -253,3 +256,35 @@ cari.addEventListener("keyup", function(){
     });
 
 });
+
+async function tampilkanKomentar(idPosting){
+
+    daftarKomentar.innerHTML = "";
+
+    const snapshot = await getDocs(collection(db, "Komentar"));
+
+    let jumlah = 0;
+
+    snapshot.forEach((doc) => {
+
+        const data = doc.data();
+
+        if(data.post === idPosting){
+
+            jumlah++;
+
+            daftarKomentar.innerHTML += `
+                <div class="item-komentar">
+                    <b>${data.nama}</b><br>
+                    ${data.komentar}
+                    <hr>
+                </div>
+            `;
+        }
+
+    });
+
+    document.querySelector(
+        '.lihat-komentar[data-post="' + idPosting + '"]'
+    ).innerHTML = `💬 Lihat Komentar (${jumlah})`;
+}
