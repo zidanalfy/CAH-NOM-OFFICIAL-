@@ -417,7 +417,7 @@ footer .sosmed a:hover{
 
 ::-webkit-scrollbar-thumb:hover{
     background:#5D2E1F;
-}beranda.html
+}
 
 /* ===== SELECTION ===== */
 
@@ -476,4 +476,142 @@ footer{
     padding:30px 15px;
 }
 
+}
+
+.interaksi{
+    margin-top:20px;
+}
+
+.statistik{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 0;
+    border-top:1px solid #ddd;
+    border-bottom:1px solid #ddd;
+}
+
+.like{
+    font-weight:600;
+    color:#5D2E1F;
+    font-size:17px;
+}
+
+.like{
+    cursor:pointer;
+}
+
+.like:hover{
+    color:red;
+}
+
+/* ================= POPUP ================= */
+
+.popup{
+
+display:none;
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.55);
+z-index:9999;
+
+}
+
+.popup.active{
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+}
+
+.popup-content{
+
+width:90%;
+max-width:500px;
+background:white;
+padding:25px;
+border-radius:18px;
+max-height:85vh;
+overflow:auto;
+
+}
+
+.close{
+
+float:right;
+font-size:30px;
+cursor:pointer;
+
+}
+
+.popup-statistik{
+
+display:flex;
+justify-content:space-between;
+margin:20px 0;
+
+}
+
+.popup-content input,
+.popup-content textarea{
+
+width:100%;
+padding:12px;
+margin:8px 0;
+border-radius:10px;
+border:1px solid #ccc;
+
+}
+
+.popup-content textarea{
+
+height:90px;
+resize:none;
+
+}
+
+.popup-content button{
+
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:#5D2E1F;
+color:white;
+cursor:pointer;
+
+}
+
+.popup-rating{
+    text-align:center;
+    margin:15px 0;
+}
+
+.star{
+    font-size:32px;
+    color:#ccc;
+    cursor:pointer;
+    transition:.2s;
+    margin:0 2px;
+}
+
+.star.active{
+    color:gold;
+}
+
+.search-box{
+    text-align:center;
+    margin:20px;
+}
+
+.search-box input{
+    width:90%;
+    max-width:500px;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    font-size:16px;
 }
